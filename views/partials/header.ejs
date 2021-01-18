@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="/Stylesheets/bootstrap.css">
+  <link rel="stylesheet" href="/fonts/bootstrap-icons.css">
+  <link rel="stylesheet" type="text/css" href="/Stylesheets/Elements.css">
+  <link rel="stylesheet" type="text/css" href="/Stylesheets/app.css">
+</head>
+
+<body>
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <% if(!user){ %>
+        <a href="/" class="navbar-brand">AUTHENTICATION TEMPLATE</a>
+        <% } else{ %>
+          <a href="/u/home" class="navbar-brand">AUTHENTICATION TEMPLATE</a>
+          <% } %>
+
+            <form class="form-inline">
+              <input class="form-control" type="search" placeholder="Type anything" aria-label="Search">
+              <!-- ADD SEARCH FUNCTIONALITY -->
+              <button class="btn btn-outline-primary" type="submit">Search</button>
+              <!-- Replace Search with icon -->
+            </form>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav">
+                <% if(!user){ %>
+                  <li class="nav-item">
+                    <a class="nav-link howto" href="#">How it works</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link register" href="#">Register</a>
+                  </li>
+                  <li class="nav-item login">
+                    <a class="nav-link" href="#">Login</a>
+                  </li>
+                  <% } else{ %>
+                    <li class="nav-item">
+                      <a class="nav-link active" href="#">How to Use</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#"><i class="bi bi-bell-fill"></i></a>
+                    </li>
+                    <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <%= user.firstName[0].toUpperCase() + user.firstName.slice(1)%>
+                      </a>
+                      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="/u/<%= user._id %>/profile">Profile</a>
+                        <a class="dropdown-item" href="/u/<%= user._id %>/edit">Security</a>
+                        <div class="dropdown-divider"></div>
+                        <a href="/u/logout" class="dropdown-item">Logout</a>
+                      </div>
+                    </li>
+                    <% } %>
+              </ul>
+            </div>
+    </nav>
+  </header>
+  <div class="container-fluid main-content">

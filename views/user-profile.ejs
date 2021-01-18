@@ -1,0 +1,9 @@
+<title>USER PROFILE</title>
+<%- include("partials/header") %>
+<h2> <%= user.firstName.toUpperCase() + user.lastName.toUpperCase() %></h2>
+<h2> <%= user.email %></h2>
+<h2> <%= user.dateOfBirth %></h2>
+<h2> <%= user.gender %></h2>
+<h2> <%= user.isMaster %></h2>
+<h2>OTHER STUFF</h2>
+<%- include("partials/footer") %>

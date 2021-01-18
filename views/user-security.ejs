@@ -1,0 +1,18 @@
+<title>USER PROFILE</title>
+<%- include("partials/header") %>
+<h2> <%= user.firstName.toUpperCase() + user.lastName.toUpperCase() %></h2>
+<h2> <%= user.email %></h2>
+<button class="btn btn-link">Change Email</button>
+<button class="btn btn-dark">Change Password</button>
+<div class="change-email">
+    <form action="/u/<%= user._id %>?_method=PUT" method="POST">
+        <input class="form-control" type="email" name="oldEmail" placeholder="Old Email" value="<%= user.email %>" readonly>
+        <input class="form-control" type="email" name="email" placeholder="New Email" required>
+        <!-- If email id are same here only then error flash -->
+        <input class="form-control" type="password" name="password" placeholder="Enter Password" required>
+        <button class="btn btn-dark" type="submit">Change email</button>
+    </form>
+</div>
+<h2>OTHER STUFF</h2>
+<h2>Delete account ?</h2>
+<%- include("partials/footer") %>

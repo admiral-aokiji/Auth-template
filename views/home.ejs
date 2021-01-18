@@ -1,0 +1,58 @@
+<title>AUTHENTICATION TEMPLATE</title>
+<%- include("partials/header") %>
+    <div class="row">
+        <div class="col-lg-9 jumbotron">
+            <h1>MAIN CONTENT</h1>
+            <button class="btn btn-primary login" style="margin-top: 50vh;">CLICK HERE TO LOGIN</button>
+            <button class="btn btn-danger register" style="margin-top: 50vh;">CLICK HERE TO REGISTER</button>
+        </div>
+        <div class="col-lg-3 bg-light border-dark">
+            <%- include("partials/messages") %>
+                <div class="body-login">
+                    <h2> LOGIN FORM</h2>
+                    <form action="/u/login" method="POST">
+                        <input class="form-control" type="email" name="email" placeholder="Email" required>
+                        <input class="form-control" type="password" name="password" placeholder="Password" required>
+                        <button class="btn btn-dark" type="submit">Login</button>
+                        <button class="btn btn-link" type="submit">Forgot Password?</button>
+                    </form>
+                    <p>No Account? <button class="register btn btn-primary">Register</button></p>
+                </div>
+                <div class="body-register" style="display: none;">
+                    <h2> SIGNUP FORM</h2>
+                    <form action="/u/register" method="POST">
+                        <input class="form-control" type="text" name="email" placeholder="Email"
+                            value="<%= typeof email != 'undefined' ? email : '' %>" required>
+                        <input class="form-control" type="text" name="firstName" placeholder="First Name"
+                            value="<%= typeof firstName != 'undefined' ? firstName : '' %>" required>
+                        <input class="form-control" type="text" name="lastName" placeholder="Last Name"
+                            value="<%= typeof lastName != 'undefined' ? lastName : '' %>" required>
+                        <div class="form-check form-check-inline">
+                            <label class="form-check-label"><input class="form-check-input" name="gender" value="Male"
+                                    type="radio" checked>Male</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <label class="form-check-label"><input class="form-check-input" name="gender" value="Female"
+                                    type="radio">Female</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <label class="form-check-label"><input class="form-check-input" name="gender"
+                                    value="Unknown" type="radio">Prefer not to say</label>
+                        </div>
+                        <input class="form-control" type="password" name="password" placeholder="Password"
+                            value="<%= typeof password != 'undefined' ? password : '' %>" required>
+                        <input class="form-control" type="password" name="password2" placeholder="Confirm Password"
+                            value="<%= typeof password2 != 'undefined' ? password2 : '' %>" required>
+                        <button class="btn btn-dark" type="submit">Register</button>
+                    </form>
+                    <p>Have An Account? <button class="login btn btn-danger">Login</button></p>
+                </div>
+                <div class="body-howTo" style="display: none;">
+                    <h1>HOWTO CONTENT</h1>
+                    <button class="btn btn-primary login" style="margin-top: 25vh;">CLICK HERE TO LOGIN</button>
+                    <button class="btn btn-danger register">CLICK HERE TO REGISTER</button>
+                </div>
+        </div>
+    </div>
+    <script src="\Scripts\home-script.js"></script>
+    <%- include("partials/footer") %>
